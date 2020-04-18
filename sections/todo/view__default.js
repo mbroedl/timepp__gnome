@@ -34,7 +34,7 @@ const G = ME.imports.sections.todo.GLOBAL;
 // @delegate : obj (main section object)
 // =====================================================================
 var ViewDefault  = class ViewDefault {
-    
+
 
     constructor (ext, delegate) {
         this.ext      = ext;
@@ -402,7 +402,7 @@ var ViewDefault  = class ViewDefault {
         return null;
     }
 
-    match_due_date function(filter, due_in) {
+    match_due_date (filter, due_in) {
         if (due_in >=  99999999) return false;
         if (!filter.toLowerCase().startsWith('due')) return false;
         let parsed = filter.match(REG.TODO_KANBAN_DUE)
@@ -420,9 +420,9 @@ var ViewDefault  = class ViewDefault {
                 return(due_in == offset);
         }
         return(false);
-    },
+    }
 
-    horiz_scroll function (event) {
+    horiz_scroll (event) {
         let direction = event.get_scroll_direction();
         let delta = 0;
 
