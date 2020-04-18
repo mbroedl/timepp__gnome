@@ -1094,13 +1094,8 @@ var TimerFullscreen = class TimerFullscreen extends FULLSCREEN.Fullscreen {
             this.delegate.slider_released();
             this.title.text = '';
         });
-<<<<<<< HEAD
-        this.slider.connect('notify::value', (slider, val) => {
-            this.delegate.slider_changed(slider, val);
-=======
         this.slider.connect('notify::value', () => {
             this.delegate.slider_changed(this.slider.value);
->>>>>>> upstream/master
             this.actor.remove_style_class_name('timer-expired');
             this.title.text = '';
         });
