@@ -15,7 +15,7 @@ time tracker, timer, stopwatch, pomodoro, and alarms [gnome-shell extension](htt
     <summary><b>Table of Contents</b></summary>
 
 * [Installation](#installation)
-* [Lock Screen Warning](#lock-screen-warning)
+* [Warnings](#warnings)
 * [Translations](#translations)
 * [Sections](#sections)
 * [Fullscreen Interface](#fullscreen-interface)
@@ -34,18 +34,21 @@ time tracker, timer, stopwatch, pomodoro, and alarms [gnome-shell extension](htt
 
 ### Installation
 
-1. Download this repository into your `/home/YOUR_USER_NAME/.local/share/gnome-shell/extensions` folder.
-   * [The latest version](https://github.com/zagortenay333/timepp__gnome/archive/master.zip) supports `gnome-shell 3.32` (`master-branch`).
+1. Download the extension:
+   * [The latest version](https://github.com/zagortenay333/timepp__gnome/archive/master.zip) supports `gnome-shell 3.34` (`master-branch`).
    * For older versions go to [releases](../../releases).
-2. Extract and rename the downloaded folder to `timepp@zagortenay333`.
+2. Extract and rename the downloaded folder to `timepp@zagortenay333` and move it into  
+   `/home/YOUR_USER_NAME/.local/share/gnome-shell/extensions/`.
 3. Restart your desktop shell by typing <kbd>Alt</kbd>+<kbd>F2</kbd>, then <kbd>r</kbd>, then <kbd>Enter</kbd>.
 4. Enable the extension via the `gnome tweak tool` program.
 
 ---
 
-### Lock Screen Warning :bangbang:
+### Warnings :bangbang:
 
-**All gnome-shell extensions get disabled in the lock screen. Alarms, timers, etc will not work.**
+1. This extension is in very low-maintenance mode (don't make feature requests).
+2. In case of a bug, this extension can freeze your OS, which could require significant effort on your part to solve.
+3. All gnome-shell extensions get disabled in the lock screen. Alarms, timers, etc will not work.
 
 ---
 
@@ -94,6 +97,7 @@ Some of the features of the todo.txt manager are:
 * Autoupdating when the todo.txt file changes.
 * Deleting all completed tasks and optionally storing them into a done.txt file.
 * Switching between different views via keyboard shortcuts.
+* Browse your todo time tracker data in a fullscreen view.
 
 ---
 
@@ -102,9 +106,9 @@ Some of the features of the todo.txt manager are:
 * The todo.txt format is specified here: https://github.com/todotxt/todo.txt
 
 * In various places throughout this extension (todo.txt, alarms, timer) there is
-support for some **markdown** stuff:
+support for a simple markup language:
 
-    * A simple version of markdown is supported:
+    * Simple text formatting:
         ```
         `     escape other markdown
         ``    monospace and escape other markdown
@@ -122,13 +126,11 @@ support for some **markdown** stuff:
         ##    x-large
         ###   large
 
-        -------------------------------------
-
         For example, *bold*, and ##extra large##, and ``monospaced``, and
         ***this __one__ is nested***, etc...
         ```
 
-    * File paths and web links are supported:
+    * File paths and web links:
         ```
         https://www.google.com
         www.google.com
@@ -139,7 +141,7 @@ support for some **markdown** stuff:
         ~/Documents/file\ with\ spaces.png
         ```
 
-    * Newline chars in the todo.txt file can be used to have multiline support:
+    * Multiple lines can be used by adding `\n` to represent a newline:
         ```
         (A) A task with\nmultiline\n@support \n +asdf
         ```
@@ -326,23 +328,14 @@ day of February every 2 years starting from 2000.</li>
 
 ### Time Tracker
 
-The time tracker is built into the todo.txt manager.
+You can start time tracking by pressing the play button on a todo card. When you do that,
+the task as well as all projects in that task will be tracked.
 
-* When the play button is pressed, the task as well as all projects in that task
-will be tracked.
+Time tracking data is stored in csv files. The directory structure of the tracker and the
+csv specification can be found [here](data/tracker_spec.md).
 
-* When a task that has been tracked is edited, only the corresponding entry
+When a task that has been tracked is edited, only the corresponding entry
 in the daily csv file will be updated; the yearly csv file will not be changed.
-
-* The directory structure of the tracker and the csv specification can be found
-[here](data/tracker_spec.md).
-
-* This extension features a fullscreen stats view for browsing/searching your time-tracker data.
-    * The stats uses vbar graphs to display total time and/or work intervals.
-    * It supports viewing time spent on tasks/projects on any recorded day.
-    * You can see a detailed view for a particular task/project.
-    * You can fuzzy search your history.
-    * You can view the most worked on tasks/projects in a particular time interval.
 
 ---
 

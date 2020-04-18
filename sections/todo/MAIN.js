@@ -56,7 +56,6 @@ const CACHE_FILE = '~/.cache/timepp_gnome_shell_extension/timepp_todo.json';
 //   - 'tasks-changed'
 // =====================================================================
 var SectionMain = class SectionMain extends ME.imports.sections.section_base.SectionBase {
-    
     constructor (section_name, ext, settings) {
         super(section_name, ext, settings);
         this.actor.add_style_class_name('todo-section');
@@ -515,7 +514,6 @@ var SectionMain = class SectionMain extends ME.imports.sections.section_base.Sec
                                 this.stats.deferred_tasks;
 
             this.panel_item.set_label('' + n_incompleted);
-            this.panel_item.set_mode('icon_text');
 
             if (n_incompleted) this.panel_item.actor.remove_style_class_name('done');
             else               this.panel_item.actor.add_style_class_name('done');

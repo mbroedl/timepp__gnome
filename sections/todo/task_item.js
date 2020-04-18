@@ -48,9 +48,7 @@ let LAST_TIME_CLICKED    = 0; // for double click on task
 // the todo.txt file but must in case a task recurs. (E.g., when we load
 // tasks from the todo.txt file.)
 // =====================================================================
-var TaskItem  = class TaskItem {
-    
-
+var TaskItem = class TaskItem {
     constructor (ext, delegate, task_str, self_update = true) {
         this.ext      = ext;
         this.delegate = delegate;
@@ -829,7 +827,7 @@ var TaskItem  = class TaskItem {
         this.pinned = (this.pinned === 1) ? 0 : 1;
         let old_task_str = this.task_str;
 
-        if (this.pinned)  {
+        if (this.pinned) {
             this.pin_icon.add_style_class_name('active');
             this.task_str += ' pin:1';
         } else {

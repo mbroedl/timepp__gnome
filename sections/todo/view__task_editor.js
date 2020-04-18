@@ -57,9 +57,7 @@ const EditorMode = {
 // of that task object and the signals 'delete-task' and 'edit-task' will be
 // used instead of 'add-task'.
 // =====================================================================
-var ViewTaskEditor  = class ViewTaskEditor {
-    
-
+var ViewTaskEditor = class ViewTaskEditor {
     constructor (ext, delegate, task) {
         this.ext      = ext;
         this.delegate = delegate;
@@ -462,7 +460,7 @@ var ViewTaskEditor  = class ViewTaskEditor {
         this.completion_menu_content.destroy_all_children();
         this.completion_menu.show();
 
-        for (let i = 0; i < completions.length; i++)  {
+        for (let i = 0; i < completions.length; i++) {
             let item = new St.Button({ label: completions[i], reactive: true, track_hover: true, x_align: St.Align.START, style_class: 'row popup-menu-item' });
             this.completion_menu_content.add_child(item);
 
