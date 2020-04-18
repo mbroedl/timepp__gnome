@@ -52,7 +52,6 @@ const StatsMode = {
 // @monitor  : int (monitor position)
 // =====================================================================
 var StatsView = class StatsView extends FULLSCREEN.Fullscreen{
-    
     constructor (ext, delegate, monitor) {
         super(monitor);
 
@@ -1366,7 +1365,7 @@ var StatsView = class StatsView extends FULLSCREEN.Fullscreen{
                 label._delegate  = item;
 
                 label.connect('allocation-changed', () => {
-                    if (type === '()')  {
+                    if (type === '()') {
                         if (!this.task_results.scrollview.vscrollbar_visible)
                             MISC_UTILS.resize_label(label);
                     } else if (!this.project_results.scrollview.vscrollbar_visible) {

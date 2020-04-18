@@ -13,9 +13,8 @@ Gettext.bindtextdomain(ME.metadata['gettext-domain'], ME.path + '/locale');
 const _ = Gettext.domain(ME.metadata['gettext-domain']).gettext;
 
 
-class Settings{
-
-    constructor() {
+class Settings {
+    constructor () {
         {
             let GioSSS = Gio.SettingsSchemaSource;
             let schema = GioSSS.new_from_directory(
@@ -36,7 +35,7 @@ class Settings{
     }
 
     // Bind the gtk window to the schema settings
-    _bind_settings() {
+    _bind_settings () {
         let widget;
 
         //

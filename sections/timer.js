@@ -72,7 +72,6 @@ const PanelMode = {
 // @settings : obj (extension settings)
 // =====================================================================
 var SectionMain = class SectionMain extends ME.imports.sections.section_base.SectionBase {
-    
     constructor (section_name, ext, settings) {
         super(section_name, ext, settings);
 
@@ -225,7 +224,7 @@ var SectionMain = class SectionMain extends ME.imports.sections.section_base.Sec
         this.sigm.connect_release(this.start_pause_icon, Clutter.BUTTON_PRIMARY, true, () => this.toggle_timer());
         this.sigm.connect_release(this.fullscreen_icon, Clutter.BUTTON_PRIMARY, true, () => this.show_fullscreen());
         this.sigm.connect_release(this.settings_icon, Clutter.BUTTON_PRIMARY, true, () => this._show_presets());
-        this.sigm.connect(this.slider, 'notify::value', (slider, value) => this.slider_changed(slider, value));
+        this.sigm.connect(this.slider, 'notify::value', () => this.slider_changed(this.slider.value));
         this.sigm.connect(this.slider, 'drag-end', () => this.slider_released());
         this.sigm.connect(this.slider.actor, 'scroll-event', () => this.slider_released());
     }
@@ -420,7 +419,7 @@ var SectionMain = class SectionMain extends ME.imports.sections.section_base.Sec
         }
     }
 
-    slider_changed (slider, value) {
+    slider_changed (value) {
         if (this.tic_mainloop_id) {
             Mainloop.source_remove(this.tic_mainloop_id);
             this.tic_mainloop_id = null;
@@ -612,10 +611,8 @@ Signals.addSignalMethods(SectionMain.prototype);
 //    - 'start-timer'   (returns a preset obj)
 //    - 'delete-preset' (returns a preset obj)
 // =====================================================================
-var TimerPresetsView  = class TimerPresetsView {
-    
-
-    constructor(ext, delegate) {
+var TimerPresetsView = class TimerPresetsView {
+    constructor (ext, delegate) {
         this.ext      = ext;
         this.delegate = delegate;
 
@@ -916,10 +913,8 @@ Signals.addSignalMethods(TimerPresetsView.prototype);
 //
 // @signals: 'ok', 'cancel', 'delete'
 // =====================================================================
-var TimerPresetEditor  = class TimerPresetEditor {
-    
-
-    constructor(ext, delegate, preset, is_deletable) {
+var TimerPresetEditor = class TimerPresetEditor {
+    constructor (ext, delegate, preset, is_deletable) {
         this.ext      = ext;
         this.delegate = delegate;
         this.preset   = preset;
@@ -1057,7 +1052,6 @@ Signals.addSignalMethods(TimerPresetEditor.prototype);
 // @signals: 'monitor-changed'
 // =====================================================================
 var TimerFullscreen = class TimerFullscreen extends FULLSCREEN.Fullscreen {
-    
     constructor (ext, delegate, monitor) {
         super(monitor);
         this.default_style_class = this.actor.style_class;
@@ -1100,8 +1094,13 @@ var TimerFullscreen = class TimerFullscreen extends FULLSCREEN.Fullscreen {
             this.delegate.slider_released();
             this.title.text = '';
         });
+<<<<<<< HEAD
         this.slider.connect('notify::value', (slider, val) => {
             this.delegate.slider_changed(slider, val);
+=======
+        this.slider.connect('notify::value', () => {
+            this.delegate.slider_changed(this.slider.value);
+>>>>>>> upstream/master
             this.actor.remove_style_class_name('timer-expired');
             this.title.text = '';
         });
